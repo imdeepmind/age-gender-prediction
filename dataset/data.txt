@@ -1,0 +1,11 @@
+For downloading the dataset please visit 
+
+https://github.com/imdeepmind/processed-imdb-wiki-dataset
+
+This github repo contains the information for generating the dataset
+
+You can also try to download the dataset from my google drive
+
+https://drive.google.com/open?id=11VvEdItFuNgQabdeLZbSmrNU6onVXQnl
+
+

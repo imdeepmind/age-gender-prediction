@@ -18,7 +18,7 @@ while True:
         face = haar.detectMultiScale(gray, 1.2, 5)
         
         for x,y,w,h in face:
-            cv2.rectangle(frame, (x,y), (x+w, y+h), (255,0,0), 2)
+            cv2.rectangle(frame, (x,y), (x+w, y+h), (0,255,0), 2)
             roi = gray[x:x+w, y:y+h]
             
             target = cv2.resize(roi, (64,64))
@@ -26,14 +26,17 @@ while True:
             
             dt = model.predict_classes(target)
             
-            if dt == '0':
+            if dt[0] == 0:
                 gname = 'Female'
             else:
                 gname = 'Male'
-        
+
             age = age_model.predict(target)
-            print(age[0][0]*100)
-            cv2.putText(frame, gname, (x,y), cv2.FONT_HERSHEY_SIMPLEX, 1, (0,255,0), 2, cv2.LINE_AA)
+
+            text = "Gender: " + str(gname) + " Age: " + str(int(age[0][0]*100))
+            
+            cv2.putText(frame, text, (x,y), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0,255,0), 2, cv2.LINE_AA)
+            
         cv2.imshow('ME', frame)
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break

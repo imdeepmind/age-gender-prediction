@@ -31,9 +31,9 @@ while True:
             else:
                 gname = 'Male'
 
-            age = age_model.predict(target)
+            age = age_model.predict_classes(target)
 
-            text = "Gender: " + str(gname) + " Age: " + str(int(age[0][0]*100))
+            text = "Gender: " + str(gname) + " Age: " + str(int(age[0]))
             
             cv2.putText(frame, text, (x,y), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0,255,0), 2, cv2.LINE_AA)
             

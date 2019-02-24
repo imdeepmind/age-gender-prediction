@@ -4,10 +4,10 @@ import keras
 camera = cv2.VideoCapture(0)
 haar = cv2.CascadeClassifier('cascades/haarcascade_frontalface_alt2.xml')
 
-model = keras.models.load_model('customModel/gender/gender.h5')
+model = keras.models.load_model('gender/custom/gender.h5')
 model.compile(optimizer = 'adam', loss = 'binary_crossentropy', metrics = ['accuracy'])
 
-age_model = keras.models.load_model('customModel/age/age.h5')
+age_model = keras.models.load_model('/age/csutom/age.h5')
 age_model.compile(loss='mean_squared_error', optimizer='adam')
 
 while True:

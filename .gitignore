@@ -1,0 +1,9 @@
+cascades/
+
+gender/Custom/weights/
+gender/InceptionResNetV2/weights/
+gender/MobileNetV2/weights/
+
+age/Custom/weights/
+age/InceptionResNetV2/weights/
+age/MobileNetV2/weights/

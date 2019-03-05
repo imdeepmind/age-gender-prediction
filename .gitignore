@@ -7,3 +7,6 @@ gender/MobileNetV2/weights/
 age/Custom/weights/
 age/InceptionResNetV2/weights/
 age/MobileNetV2/weights/
+
+meta.csv
+.ipynb_checkpoints/

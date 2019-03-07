@@ -25,7 +25,7 @@ inception = InceptionResNetV2(include_top=False,
 
 # Adding the inception model and configuting the output layer
 model.add(inception)
-model.add(Dense(units=2, activation="softmax", name="pred_gender"))
+model.add(Dense(units=2, activation="softmax"))
 
 # Compiling the model
 model.compile(loss='binary_crossentropy', optimizer=optimizers.RMSprop(lr=2e-5), metrics=['accuracy'])
@@ -42,14 +42,14 @@ train_datagen = ImageDataGenerator(rescale=1./255,shear_range=0.2,zoom_range=0.3
 test_datagen = ImageDataGenerator(rescale=1./255)
 
 # Reading the training set
-train_generator = train_datagen.flow_from_directory('images/train',
+train_generator = train_datagen.flow_from_directory('dataset/gender/train',
                                                     target_size=(128, 128),
-                                                    batch_size=32,
+                                                    batch_size=64,
                                                     class_mode='categorical')
 # Reading the testing set
-test_set = test_datagen.flow_from_directory('images/test',
+test_set = test_datagen.flow_from_directory('dataset/gender/test',
                                             target_size=(128, 128),
-                                            batch_size=32,
+                                            batch_size=64,
                                             class_mode='categorical')
 
 ############################
@@ -59,14 +59,14 @@ test_set = test_datagen.flow_from_directory('images/test',
 # Finally training the model
 # For better accuracy adjust the epochs
 model.fit_generator(train_generator,
-                    steps_per_epoch=1000,
+                    steps_per_epoch=2800,
                     epochs=5,
                     validation_data=test_set,
-                    validation_steps=1500)
+                    validation_steps=800)
 
 ##########################
 # STEP 5: Saving The Model
 ##########################
 
 # Saving the model
-model.save('gender_inceptionresnetv2_02_march.h5')
+model.save('weights/gender_inception.h5')

@@ -4,13 +4,15 @@ import keras
 camera = cv2.VideoCapture(0)
 haar = cv2.CascadeClassifier('cascades/haarcascade_frontalface_alt2.xml')
 
-model = keras.models.load_model('gender/MobileNetV2/gender_mobilenetv2_march_03.h5')
+model = keras.models.load_model('gender/MobileNetV2/weights/gender_mobilenetv2_march_03.h5')
 model.compile(optimizer = 'adam', loss = 'binary_crossentropy', metrics = ['accuracy'])
 
 while True:
     try:
         ret, frame = camera.read()
         gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+
+        cv2.putText(frame, 'TechVariable',(25,25), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (255,0,0), 2, cv2.LINE_AA)
         
         face = haar.detectMultiScale(gray, 1.2, 5)
         

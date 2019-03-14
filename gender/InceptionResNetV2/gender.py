@@ -60,7 +60,7 @@ test_set = test_datagen.flow_from_directory('dataset/gender/test',
 # For better accuracy adjust the epochs
 model.fit_generator(train_generator,
                     steps_per_epoch=2800,
-                    epochs=5,
+                    epochs=30,
                     validation_data=test_set,
                     validation_steps=800)
 

@@ -28,7 +28,7 @@ model.add(inception)
 model.add(Dense(units=102, activation="softmax"))
 
 # Compiling the model
-model.compile(loss='binary_crossentropy', optimizer=optimizers.RMSprop(lr=2e-5), metrics=['accuracy'])
+model.compile(loss='categorical_crossentropy', optimizer=optimizers.RMSprop(lr=2e-5), metrics=['accuracy'])
 
 # Printing the summary of the model
 print(model.summary())
@@ -60,7 +60,7 @@ test_set = test_datagen.flow_from_directory('dataset/age/test',
 # For better accuracy adjust the epochs
 model.fit_generator(train_generator,
                     steps_per_epoch=1000,
-                    epochs=5,
+                    epochs=30,
                     validation_data=test_set,
                     validation_steps=1500)
 

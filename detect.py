@@ -4,7 +4,7 @@ import keras
 camera = cv2.VideoCapture(0)
 haar = cv2.CascadeClassifier('cascades/haarcascade_frontalface_alt2.xml')
 
-model = keras.models.load_model('gender/MobileNetV2/weights/gender_mobilenetv2_march_03.h5')
+model = keras.models.load_model('gender/InceptionResNetV2/weights/inception_gender.h5')
 model.compile(optimizer = 'adam', loss = 'binary_crossentropy', metrics = ['accuracy'])
 
 while True:
